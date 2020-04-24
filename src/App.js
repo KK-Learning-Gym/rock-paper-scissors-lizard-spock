@@ -5,25 +5,36 @@ import Header from './components/Header'
 import Options from './components/Options'
 import Result from './components/Result'
 
+const Container = props => {
+	return (
+		<div className="page-wrapper">
+			<Header /> {props.children}
+		</div>
+	)
+}
+
 const App = () => {
 	const page = useSelector(state => state.page)
 
-	if (page === 'home') {
-		return (
-			<>
-				<Header />
-				<Options />
-			</>
-		)
-	}
-
-	if (page === 'result') {
-		return (
-			<>
-				<Header />
-				<Result />
-			</>
-		)
+	switch (page) {
+		case 'home':
+			return (
+				<Container>
+					<Options />
+				</Container>
+			)
+		case 'result':
+			return (
+				<Container>
+					<Result />
+				</Container>
+			)
+		default:
+			return (
+				<Container>
+					<Options />
+				</Container>
+			)
 	}
 }
 

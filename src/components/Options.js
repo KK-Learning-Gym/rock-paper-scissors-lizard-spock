@@ -7,6 +7,10 @@ const getRandomInt = max => {
 	return Math.floor(Math.random() * Math.floor(max))
 }
 
+const getAngle = index => {
+	return 18 * (1 + 4 * Number(index))
+}
+
 const options = [
 	{
 		name: 'Rock',
@@ -64,13 +68,18 @@ const Options = () => {
 	}
 
 	return (
-		<ul>
-			{options.map(option => (
-				<li key={option.name} value={option.name} onClick={handleSelect}>
+		<div className="option-wrapper">
+			{options.map((option, index) => (
+				<div
+					className={`option deg${getAngle(index)}`}
+					key={option.name}
+					value={option.name}
+					onClick={handleSelect}
+				>
 					{option.name}
-				</li>
+				</div>
 			))}
-		</ul>
+		</div>
 	)
 }
 

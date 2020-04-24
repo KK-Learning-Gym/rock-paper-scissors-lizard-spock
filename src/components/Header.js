@@ -6,10 +6,7 @@ const Header = () => {
 	return (
 		<>
 			<div>Rock, Paper, Scissors, Lizard, Spock</div>
-			<div>
-				Score
-				{score}
-			</div>
+			<div>Score {score}</div>
 		</>
 	)
 }

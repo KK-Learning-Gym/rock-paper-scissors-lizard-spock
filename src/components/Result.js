@@ -9,7 +9,7 @@ const Result = () => {
 
 	if (result !== 'unknown') {
 		return (
-			<>
+			<div>
 				<div>
 					You picked {choice.player}. House picked {choice.house}.
 				</div>
@@ -17,7 +17,7 @@ const Result = () => {
 				<button onClick={() => dispatch(clear())} type="button">
 					Play Again
 				</button>
-			</>
+			</div>
 		)
 	}
 	return <>loading...</>
