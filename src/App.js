@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import './App.css'
 
-function App() {
+const Header = ({ score }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div>Rock, Paper, Scissors, Lizard, Spock</div>
+      <div>
+        Score
+        {score}
+      </div>
+    </>
+  )
 }
 
-export default App;
+const Options = ({ handleSelect }) => {
+  const options = [Rock, Paper, Scissors, Lizard, Spock]
+  return (
+    <ul>
+      {options.map((option) => (
+        <li key={option}>{option}</li>
+      ))}
+    </ul>
+  )
+}
+
+const App = () => {
+  const [page, setPage] = useState('home')
+  const [score, setScore] = useState(0)
+  const [choice, setChoice] = useState({ player: null, computer: null })
+
+  const handleSelect = () => {}
+
+  if (page === 'home') {
+    return (
+      <>
+        <Header />
+        <Options handleSelect={handleSelect} />
+      </>
+    )
+  }
+}
+
+export default App
