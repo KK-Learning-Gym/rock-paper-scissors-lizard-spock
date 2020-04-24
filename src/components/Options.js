@@ -11,34 +11,11 @@ const getAngle = index => {
 	return 18 * (1 + 4 * Number(index))
 }
 
-const options = [
-	{
-		name: 'Rock',
-		beats: ['Scissors', 'Lizard'],
-	},
-	{
-		name: 'Paper',
-		beats: ['Rock', 'Spock'],
-	},
-	{
-		name: 'Scissors',
-		beats: ['Paper', 'Lizard'],
-	},
-	{
-		name: 'Lizard',
-		beats: ['Paper', 'Spock'],
-	},
-	{
-		name: 'Spock',
-		beats: ['Rock', 'Scissors'],
-	},
-]
-
-const Options = () => {
+const Options = ({ options }) => {
 	const dispatch = useDispatch()
 	const choice = useSelector(state => state.choice)
 
-	const hook = () => {
+	const choiceHook = () => {
 		if (choice.player && choice.house) {
 			const pickedOption = options.find(option => option.name === choice.player)
 			if (choice.player === choice.house) {
@@ -53,7 +30,7 @@ const Options = () => {
 		}
 	}
 
-	useEffect(hook, [choice, dispatch])
+	useEffect(choiceHook, [choice, dispatch])
 
 	const handleSelect = event => {
 		const playerChoice = event.target.getAttribute('value')
@@ -67,20 +44,18 @@ const Options = () => {
 		dispatch(setChoice(selectedChoice))
 	}
 
-	return (
-		<div className="option-wrapper">
-			{options.map((option, index) => (
-				<div
-					className={`option deg${getAngle(index)}`}
-					key={option.name}
-					value={option.name}
-					onClick={handleSelect}
-				>
-					{option.name}
-				</div>
-			))}
-		</div>
-	)
+	if (options) {
+		return (
+			<div className="option-wrapper">
+				{options.map((option, index) => (
+					<div className={`option deg${getAngle(index)}`} key={option.name}>
+						<img src={option.icon} value={option.name} alt={option.name} onClick={handleSelect} />
+					</div>
+				))}
+			</div>
+		)
+	}
+	return null
 }
 
 export default Options
