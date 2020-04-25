@@ -46,13 +46,22 @@ const Options = ({ options }) => {
 
 	if (options) {
 		return (
-			<div className="option-wrapper">
+			<main className="option-wrapper">
 				{options.map((option, index) => (
-					<div className={`option deg${getAngle(index)}`} key={option.name}>
-						<img src={option.icon} value={option.name} alt={option.name} onClick={handleSelect} />
+					<div
+						className={`option deg${getAngle(index)} bubbly-button icon-wrapper border-color-${option.name}`}
+						key={option.name}
+					>
+						<img
+							src={option.icon}
+							value={option.name}
+							alt={option.name}
+							title={option.name}
+							onClick={handleSelect}
+						/>
 					</div>
 				))}
-			</div>
+			</main>
 		)
 	}
 	return null

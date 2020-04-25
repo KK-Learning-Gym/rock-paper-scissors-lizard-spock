@@ -1,9 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import './App.css'
+
 import Header from './components/Header'
 import Options from './components/Options'
 import Result from './components/Result'
+import Footer from './components/Footer'
 
 import Rock from './assets/icon-rock.svg'
 import Paper from './assets/icon-paper.svg'
@@ -14,7 +16,8 @@ import Spock from './assets/icon-spock.svg'
 const Container = props => {
 	return (
 		<div className="page-wrapper">
-			<Header /> {props.children}
+			<Header />
+			{props.children}
 		</div>
 	)
 }
@@ -55,6 +58,7 @@ const App = () => {
 			return (
 				<Container>
 					<Options options={options} />
+					<Footer />
 				</Container>
 			)
 		case 'result':
@@ -67,6 +71,7 @@ const App = () => {
 			return (
 				<Container>
 					<Options options={options} />
+					<Footer />
 				</Container>
 			)
 	}
